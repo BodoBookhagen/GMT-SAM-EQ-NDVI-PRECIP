@@ -1,2 +1,2 @@
-# GMT-SAM-EQ-NDVI-PRECIP
-GMT scripts and data for plotting topography,  earthquake distribution, rainfall and NDVI vegetation cover for SAM.
+# GMT-SAM-EQ-GPS-NDVI-PRECIP
+GMT scripts for plotting topography, earthquake, GPS vectors, vegetation cover and precipitation for the Central Andes.
