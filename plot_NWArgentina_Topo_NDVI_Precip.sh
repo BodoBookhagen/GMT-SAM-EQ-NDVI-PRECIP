@@ -45,7 +45,6 @@ OSM_CentralAndesvolcano=/raid-cachi/bodo/Dropbox/Argentina/GIS_Data/OSM/CentralA
 
 # Grid data
 MOD13A3_NDVI_CentralAndes_rTOPO15=MOD13A3_2001-2017NDVImn_CentralAndes_Topo15S.nc
-MOD13A3_EVI_CentralAndes_rTOPO15=MOD13A3_2001-2017EVImn_CentralAndes_Topo15S.nc
 
 # Prepare TRMM data
 TRMM2B31_1998_2009_MM_PER_YR=trmm2b31_annual_mm_per_year.tif
@@ -110,7 +109,7 @@ gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >
 gmt pstext salta.txt -D+0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
 gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
 gmt pstext mendoza.txt -D+1.0c/-0.5c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
-gmt psscale -R -J -DjBC+o1.0c/-2.0c/+w5c/0.3c -C$DEM_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Elevation (m)" --FONT=8p --FONT_ANNOT_PRIMARY=6p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.0c/-3.0c/+w7c/0.3c+ml -C$DEM_CPT -F+c0.1c/0.3c+gwhite+r1p+pthin,black -Baf1000:"Bathymetry and Elevation":/:"[m]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 
 TITLE="NDVI - NW Arg"
@@ -135,10 +134,8 @@ gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >
 #gmt pstext salta.txt -D+0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
 gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >> $POSTSCRIPT1
 #gmt pstext mendoza.txt -D+1.0c/-0.5c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
-echo "A" | gmt pstext -R -J -D0.1c/-0.1c -W0.5p,black -C0.2c -F+cTL+f24p,Helvetica-Bold --MAP_FRAME_PEN=0.5p,black --MAP_FRAME_WIDTH=0.1 -P -O -K >> $POSTSCRIPT1
-gmt psscale -R -J -DjBC+o-1.0c/-2.0c/+w6c/0.3c -C$NDVI_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"NDVI" --FONT=8p --FONT_ANNOT_PRIMARY=8p --MAP_FRAME_PEN=0.5p,black --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.0c/-3.0c/+w7c/0.3c+ml -C$NDVI_CPT -F+c0.1c/0.3c+gwhite+r1p+pthin,black -Baf1000:"NDVI":/:"": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
-#convert -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 
 POSTSCRIPT1=${POSTSCRIPT_BASENAME}_trmm2b31.ps
 #Make colorscale
@@ -160,41 +157,10 @@ gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >
 #gmt pstext salta.txt -D+0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
 gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >> $POSTSCRIPT1
 #gmt pstext mendoza.txt -D+1.0c/-0.5c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
-echo "B" | gmt pstext -R -J -D0.1c/-0.1c -W0.5p,black -C0.2c -F+cTL+f24p,Helvetica-Bold -P -O -K >> $POSTSCRIPT1
-gmt psscale -R -J -DjBC+o-3.0c/-2.0c/+w7c/0.3c -C$RAINFALL_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Mean annual rainfall 1998-2014 (mm/yr)" --FONT=8p --FONT_ANNOT_PRIMARY=8p --MAP_FRAME_PEN=0.5p,black --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.0c/-3.0c/+w7c/0.3c+ml -C$RAINFALL_CPT -F+c0.1c/0.3c+gwhite+r1p+pthin,black -Baf1000:"Mean annual rainfall 1998-2014":/:"[mm/yr]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 
 
-# POSTSCRIPT1=${POSTSCRIPT_BASENAME}_trmm2b31_eevents.ps
-# #Make colorscale
-# RAINFALL_CPT=rainfall_color.cpt
-# #gmt makecpt -T0.0/2000/167 -D -Cprecip_diff_12lev >$RAINFALL_CPT
-# gmt makecpt -T0.0/5/0.3 -D -CBlueDarkRed18 >$RAINFALL_CPT
-# TITLE="EEvents - NW Arg"
-# echo " "
-# echo "Creating file $POSTSCRIPT1"
-# echo " "
-# gmt grdimage $TRMM2B31_1998_2009_EEVENT_NR_NWArg_rTOPO15 -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$RAINFALL_CPT -R$TOPO15_GRD_NC -Q -Xc -Yc -E$DPI -K -P > $POSTSCRIPT1
-# gmt pscoast -Bx$XSTEP -By$YSTEP -BWSne -W1/thin,black -R -J -N1/thin,black -O -Df --FORMAT_GEO_MAP=ddd:mm:ssF --MAP_FRAME_PEN=0.5p,black --MAP_FRAME_WIDTH=0.1 -P -K >> $POSTSCRIPT1
-# gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthin,white -K -O -P >> $POSTSCRIPT1
-# gmt psxy SdC.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >> $POSTSCRIPT1
-# #gmt pstext SdC.txt -D-0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
-# gmt psxy lapaz.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >> $POSTSCRIPT1
-# #gmt pstext lapaz.txt -D+0.9c/0.2c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
-# gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >> $POSTSCRIPT1
-# #gmt pstext salta.txt -D+0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
-# gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >> $POSTSCRIPT1
-# #gmt pstext mendoza.txt -D+1.0c/-0.5c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
-# echo "C: EEvents" | gmt pstext -R -J -D0.1c/-0.1c -W0.5p,black -C0.2c -F+cTL+f24p,Helvetica-Bold -P -O -K >> $POSTSCRIPT1
-# gmt psscale -R -J -DjBL+o1.3c/6.0c/+w5c/0.3c -C$RAINFALL_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"EEvents (#/yr)" --FONT=8p --FONT_ANNOT_PRIMARY=8p --MAP_FRAME_PEN=0.5p,black --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
-# gmt psconvert $POSTSCRIPT1 -A -P -Tg
-
-
 # COMBINE plots with imagemagick
-convert -quality 50 -density 150 ${POSTSCRIPT_BASENAME}_ndvi.png ${POSTSCRIPT_BASENAME}_trmm2b31.png -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append ${POSTSCRIPT_BASENAME}_ndvi_rainfall.jpg
-
-convert -quality 100 -density 300 ${POSTSCRIPT_BASENAME}_ndvi.png ${POSTSCRIPT_BASENAME}_trmm2b31.png -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append ${POSTSCRIPT_BASENAME}_ndvi_rainfall.png
-
-# convert -quality 50 -density 150 ${POSTSCRIPT_BASENAME}_trmm2b31.png ${POSTSCRIPT_BASENAME}_trmm2b31_eevents.png -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append ${POSTSCRIPT_BASENAME}_trmm2b31_rainfall_eevents.jpg
-# 
-# convert -quality 100 -density 300 ${POSTSCRIPT_BASENAME}_trmm2b31.png ${POSTSCRIPT_BASENAME}_trmm2b31_eevents.png -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append ${POSTSCRIPT_BASENAME}_trmm2b31_rainfall_eevents.png
+convert -quality 50 -density 150 ${POSTSCRIPT_BASENAME}_topo.png ${POSTSCRIPT_BASENAME}_ndvi.png ${POSTSCRIPT_BASENAME}_trmm2b31.png -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append ${POSTSCRIPT_BASENAME}_topo_ndvi_rainfall.jpg
+convert -quality 100 -density 300 ${POSTSCRIPT_BASENAME}_topo.png ${POSTSCRIPT_BASENAME}_ndvi.png ${POSTSCRIPT_BASENAME}_trmm2b31.png -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append ${POSTSCRIPT_BASENAME}_topo_ndvi_rainfall.png
