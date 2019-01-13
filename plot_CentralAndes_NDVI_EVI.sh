@@ -79,9 +79,9 @@ gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >
 gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
 #gmt pstext mendoza.txt -D+1.0c/-0.5c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
 echo A | gmt pstext -R -J -D0.1c/-0.1c -W0.5p,black -C0.2c -F+cTL+f24p,Helvetica-Bold --MAP_FRAME_PEN=0.5p,black --MAP_FRAME_WIDTH=0.1 -P -O -K >> $POSTSCRIPT1
-gmt psscale -R -J -DjBC+h+o-0.8c/-2.0c/+w5c/0.3c -C$NDVI_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"NDVI" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=0.5p,black --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.0c/-3.0c/+w7c/0.3c+ml -C$NDVI_CPT -F+c0.1c/0.3c+gwhite+r1p+pthin,black -Baf1000:"NDVI":/:"": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
-convert -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
+convert -quality 100 -density 150 -trim $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 
 POSTSCRIPT1=${POSTSCRIPT_BASENAME}_evi.ps
 #Make colorscale
@@ -103,9 +103,9 @@ gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >
 gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
 #gmt pstext mendoza.txt -D+1.0c/-0.5c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
 echo B | gmt pstext -R -J -D0.1c/-0.1c -W0.5p,black -C0.2c -F+cTL+f24p,Helvetica-Bold -P -O -K >> $POSTSCRIPT1
-gmt psscale -R -J -DjBC+h+o-0.7c/-2.0c/+w5c/0.3c -C$EVI_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"EVI" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=0.5p,black --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.0c/-3.0c/+w7c/0.3c+ml -C$NDVI_CPT -F+c0.1c/0.3c+gwhite+r1p+pthin,black -Baf1000:"EVI":/:"": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
-convert -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
+convert -quality 100 -density 150 -trim $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 
 # COMBINE plots with imagemagick
 convert -quality 50 -density 150 ${POSTSCRIPT_BASENAME}_ndvi.png ${POSTSCRIPT_BASENAME}_evi.png -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append ${POSTSCRIPT_BASENAME}_ndvi_evi.jpg

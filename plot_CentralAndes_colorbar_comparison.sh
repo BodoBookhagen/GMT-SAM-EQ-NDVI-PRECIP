@@ -76,7 +76,7 @@ gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >
 gmt pstext salta.txt -D+0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
 gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
 gmt pstext mendoza.txt -D+1.0c/-0.5c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
-gmt psscale -R -J -DjBC+h+o-1.0c/-2.0c/+w5c/0.3c -C$DEM_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Elevation (m)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.0c/-3.0c/+w7c/0.3c+ml -C$DEM_CPT -F+c0.1c/0.3c+gwhite+r1p+pthin,black -Baf1000:"Bathymetry and Elevation":/:"[m]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 
 TITLE="Topo C. Andes - arctic cs"
@@ -102,7 +102,7 @@ gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >
 gmt pstext salta.txt -D+0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
 gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
 gmt pstext mendoza.txt -D+1.0c/-0.5c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
-gmt psscale -R -J -DjBC+h+o-1.0c/-2.0c/+w5c/0.3c -C$DEM_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Elevation (m)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.0c/-3.0c/+w7c/0.3c+ml -C$DEM_CPT -F+c0.1c/0.3c+gwhite+r1p+pthin,black -Baf1000:"Bathymetry and Elevation":/:"[m]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 
 TITLE="Topo C. Andes - relief cs"
@@ -128,7 +128,7 @@ gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >
 gmt pstext salta.txt -D+0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
 gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
 gmt pstext mendoza.txt -D+1.0c/-0.5c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
-gmt psscale -R -J -DjBC+h+o-1.0c/-2.0c/+w5c/0.3c -C$DEM_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Elevation (m)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.0c/-3.0c/+w7c/0.3c+ml -C$DEM_CPT -F+c0.1c/0.3c+gwhite+r1p+pthin,black -Baf1000:"Bathymetry and Elevation":/:"[m]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 
 #combine all plots into one row
